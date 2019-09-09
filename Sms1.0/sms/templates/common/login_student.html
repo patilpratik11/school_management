@@ -1,0 +1,42 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+{% load static %}
+
+<div class="jumbotron" style="min-height: 100%;min-height: 100vh;display: flex;align-items: center;">
+    <div class="container center_div">
+        <img src="{% static 'common/student.png' %}" class="rounded-circle mx-auto d-block" height="250px" width="250px"
+            alt="Cinque Terre">
+        <h1 class="display-5 text-center">Student</h1>
+        <form>
+            <div class="form-row">
+                <div class="col"></div>
+                <div class="col">
+                    <div class="form-row form-group">
+                        <label for="exampleInputEmail1">Name</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="Enter email">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>
+                    </div>
+                    <div class="form-row form-group">
+                        <div class="form-row form-group">
+                            <div>
+                                <label>Date of Birth</label>
+                                <input type="date" class="form-control" id="exampleInputDOB1"
+                                    placeholder="Date of Birth">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row form-group">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                </div>
+                <div class="col"></div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
