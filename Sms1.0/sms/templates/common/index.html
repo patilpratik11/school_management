@@ -1,0 +1,38 @@
+{% extends 'common/base.html' %}
+
+{% block content %}    
+
+{% load static %}
+    <!-- Main Content-->
+    <section id="intro" class="clearfix">
+        <div class="container d-flex h-100">
+          <div class="row justify-content-center align-self-center">
+            <div class="col-md-6 intro-info order-md-first order-last">
+              <h2>All in one Management<br>for Your <span>School</span></h2>
+              <div>
+                <a href="{% url 'accountstype_page' %}" class="btn-get-started scrollto">Let's Manage</a>
+              </div>
+            </div>
+      
+            <div class="col-md-6 intro-img order-md-last order-first">
+              <img src="{% static 'common/homeimg.jpg' %}" alt="" class="img-fluid">
+            </div>
+          </div>
+    
+        </div>
+      </section><!-- #intro -->   
+
+<!-- 
+    <div class="container">
+        <div class="row">
+          <div class="col">
+              <img src="{% static 'common/homepage1.jpg' %}" class="mx-auto d-block img-fluid. max-width: 100%;" height="300px" alt="Responsive image">
+          </div>
+          <div class="col">
+              <img src="{% static 'common/homepage1.jpg' %}" class="img-fluid. max-width: 100%;" height="300px" alt="Responsive image">
+          </div>
+        </div>
+    </div>     -->
+{% endblock %}
+
+  
