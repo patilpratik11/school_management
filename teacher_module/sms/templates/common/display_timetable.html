@@ -1,0 +1,38 @@
+{% extends 'common/base.html' %}
+{% block content %}
+
+	<div class="card text-center bg-light border-dark" style="height:50px">
+		<h2>Attendance list</h2>
+	</div>
+	
+	<div class="container">
+		<div class="card bg-light border-dark" style="margin:10px">
+			<table class="table table-bordered">
+			
+			<th>Monday</th>
+			<th>Tuesday</th>
+			<th>Wednesday</th>
+			<th>Thursday</th>
+			<th>Friday</th>
+			<th>Saturday</th>
+			
+			{% for x in table %}
+				<tr>
+					<td>{{x.Monday}}</td>
+					<td>{{x.Tuesday}}</td>
+					<td>{{x.Wednesday}}</td>
+					<td>{{x.Thursday}}</td>
+					<td>{{x.Friday}}</td>
+					<td>{{x.Saturday}}</td>
+				</tr>	
+			{% endfor %}
+			</table>
+			
+			<div>
+				{% for message in messages %}
+				<h3> {{message}} </h3>
+				{% endfor %}
+			</div>
+	</div>
+</div>
+{% endblock %}

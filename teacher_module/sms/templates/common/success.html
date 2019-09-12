@@ -1,0 +1,44 @@
+{% extends 'common/base.html' %}
+{% block content %}
+{% load static %}
+
+	<div class="card text-center bg-light border-dark" style="height:50px">
+		<h1>Hello, {{first}} {{last}} </h1>
+	</div>
+	
+	<div class="container">
+		<div class="card bg-light border-dark" style="margin:10px">
+			<h2>Class Teacher</h2><br>
+			<small>Class: </small>{{class}}
+		</div>
+
+		<div class="card bg-light border-dark" style="margin:10px">
+			<h2>Teaching Subjects</h2><br>
+			<small>Subjects:</small>
+			{% for i in subject %}
+				{{i}}
+			{% endfor %}
+			<small>Class:</small>
+			{% for i in classes %}
+				{{i}}
+			{% endfor %}
+		</div>
+
+		<div class="card bg-light border-dark" style="margin:10px">		
+			<br>
+				<a class="btn btn-primary" href="{% url 'display_marks' %}">View Marks</a>
+				<a class="btn btn-primary" href="{% url 'display_attendance' %}">View Attendance</a>
+				<a class="btn btn-primary" href="{% url 'display_timetable' %}">View Timetable</a>
+		</div>
+
+		<div class="card bg-light border-dark" style="margin:10px">		
+			<br>
+				<a class="btn btn-primary" href="{% url 'addsubject' %}">Add Subject</a>
+				<a class="btn btn-primary" href="{% url 'addmarks' %}">Add Marks</a>
+				<a class="btn btn-primary" href="{% url 'addattend' %}">Add Attendance</a>
+				<a class="btn btn-primary" href="{% url 'addexams' %}">Add Exams</a>
+				<a class="btn btn-primary" href="{% url 'changetable' %}">Change Timetable</a>
+		</div>
+	</div>
+
+{% endblock %}

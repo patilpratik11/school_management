@@ -1,0 +1,30 @@
+{% extends 'common/base.html' %}
+{% block content %}
+
+	<div class="card text-center bg-light border-dark" style="height:50px">
+		<h2>Attendance list</h2>
+	</div>
+	
+	<div class="container">
+		<div class="card bg-light border-dark" style="margin:10px">
+			<h3>Absent Roll No</h3>
+			{% for x in roll %}
+				{{x}}
+			{% endfor %}<br>
+			<h3>Class</h3>
+			{% for x in class %}
+				{{x}}
+			{% endfor %}<br>
+			<h3>Date</h3>
+			{% for x in date %}
+				{{x}}
+			{% endfor %}<br>
+		
+			<div>
+				{% for message in messages %}
+				<h3> {{message}} </h3>
+				{% endfor %}
+			</div>
+	</div>
+</div>
+{% endblock %}
