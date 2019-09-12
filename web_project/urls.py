@@ -20,10 +20,8 @@ from sms import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('sms.urls')),
-    path('type/',views.acctype, name="accountstype_page"),
-    path('student/',views.studentLogin, name="student_login"),
-    path('teacher/',views.teach_Login, name="teacher_login"),
-    path('parent/',views.parent_Login, name="parent_login"),
-    path('admins/',views.admin_Login, name="admins_login")
+    path('', include('student.urls')),
+   
+   
 
 ]
