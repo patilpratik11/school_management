@@ -2,7 +2,8 @@
 
 {% block content %}
 {% load static %}
-{% for student in students %}
+
+
 <!-- Header -->
 <div class="container-fluid" style="margin-bottom: 10px;">
     <div class="row h-100 align-items-center">
@@ -17,24 +18,24 @@
                         </div>
                         <div class="col-sm text-left">
                             
-                            <h1 class="display-4">{{ student.getfullname }}</h1>
+                            <h1 class="display-4">{{ dbuser.getfullname }}</h1>
                            
                             <div class="row h-100 align-items-left">
                                 <div class="col-sm-2 text-left">
-                                    <h5 style="margin-bottom: 10px;"><span class="badge badge-light">Class - {{ student.class_id.class_name }}</span>
+                                    <h5 style="margin-bottom: 10px;"><span class="badge badge-light">Class - {{ classinfo.class_name }} </span>
                                     </h5>
                                 </div>
                             </div>
                             <div class="row h-100 align-items-left">
                                 <div class="col-sm text-left">
-                                    <h5 style="margin-bottom: 10px;"><span class="badge badge-light">Roll no - {{student.rollno}}</span>
+                                    <h5 style="margin-bottom: 10px;"><span class="badge badge-light">Roll no - {{dbuser.rollno}}</span>
                                     </h5>
                                 </div>
                             </div>
                             <div class="row h-100 align-items-left">
                                 <div class="col-sm text-left">
                                     
-                                    <h5 style="margin-bottom: 10px;"><span class="badge badge-light">Parent - Aaron Davis </span></h5>
+                                    <h5 style="margin-bottom: 10px;"><span class="badge badge-light">Parent - {{ parentobject.getfullname }}</span></h5>
                                    
                                 </div>
                             </div>
@@ -134,7 +135,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Fee Status</h5>
                     
-                    <h1 class="display-3"><span class="badge badge-pill badge-success">{{ student.getstatus }}</span></h1>
+                    <h1 class="display-3"><span class="badge badge-pill badge-success">{{ dbuser.getstatus }}</span></h1>
                     
                     <a href="#" class="btn btn-primary">Download Receipt</a>
                 </div>
@@ -638,5 +639,5 @@
     </div>
 
 
-{% endfor %}
+
 {% endblock %}

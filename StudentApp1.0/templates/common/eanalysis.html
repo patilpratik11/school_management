@@ -3,60 +3,50 @@
 {% block content %}
 {% load static %}
 
+<div class="jumbotron jumbotron-fluid">
+    <div class="container text-center">
+        <h1 class="display-1">Exam Analysis</h1>
+    </div>
+</div>
 
 <div class="container-fluid">
-        <div class="row h-100 align-items-center" style="margin: 10px;">
-<div class="col-sm-1 text-center"></div>
-<div class="col-sm-10 text-center">
-        <a href="{% url 'attana' %}" class="custom-card">
-        <div class="card text-center text-white bg-dark mb-3">
-            <div class="card-body">
-                <h1 class="display-4">Exam Analysis</h1>
-                    <!-- <img src="{% static 'common/piechart.png' %}" class="rounded-circle mx-auto d-block" height="250px" width="250px"
-                alt="Cinque Terre"> -->
-                <!-- {% for dbu in dbuser %}
-                <h4>{{ dbu.marks }}</h4>
-                {% endfor %} -->
+    <div class="row h-100 align-items-center" style="margin: 10px;">
 
-                <!-- Charts.js -->
-                <canvas id="genderChart" width="1000"></canvas>
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
-                <script>
+
+        <div class="col-sm-6 text-center">
+
+            <div class="card text-center text-white bg-dark mb-3">
+                <div class="card-body">
+                    <h1 class="display-4">Class Test</h1>
+
+
+                    <!-- Charts.js -->
+                    <canvas id="genderChart" width="1000"></canvas>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+                    <script>
                         $.ajax({
-                            method:'GET',
-                            url:'/data/',
-                            success:function(data){
+                            method: 'GET',
+                            url: '/data/',
+                            success: function (data) {
                                 console.log(data);
                                 new Chart(document.getElementById("genderChart"), {
                                     type: 'bar',
                                     data: {
                                         labels: data.label_data,
-                                        
+
                                         datasets: [
                                             {
-                                                label: "Class Test(Out of 20)",
+                                                label: "Class Test(Out of 25)",
                                                 backgroundColor: "rgba(211, 84, 0)",
-                                                borderColor : "rgba(62, 149, 205, 1)",
+                                                borderColor: "rgba(62, 149, 205, 1)",
                                                 pointBackgroundColor: "rgba(62, 149, 205, 1)",
                                                 data: data.classtest_data,
+
                                             },
-                                            {
-                                                label: "Unit Test(Out of 30)",
-                                                backgroundColor: "rgba(39, 174, 96)",
-                                                borderColor : "rgba(62, 149, 205, 1)",
-                                                pointBackgroundColor: "rgba(62, 149, 205, 1)",
-                                                data: data.unittest_data,
-                                            },
-                                            {
-                                                label: "Final Test(Out of 70)",
-                                                backgroundColor: "rgba( 52, 152, 219 )",
-                                                borderColor : "rgba(62, 149, 205, 1)",
-                                                pointBackgroundColor: "rgba(62, 149, 205, 1)",
-                                                data: data.finaltest_data,
-                                            },
+
                                         ]
-                                        
+
                                     },
                                     options: {
                                         legend: {
@@ -66,63 +56,266 @@
                                             }
                                         },
                                         title: {
-                                            display : true,
-                                            text : "Exam wise Subject Marks",
-                                            fontSize : 22.0
-                                         },
-                                         
+                                            display: true,
+                                            text: "Exam wise Subject Marks",
+                                            fontSize: 22.0
+                                        },
+
                                         scales: {
                                             yAxes: [{
-                                                ticks:{
+                                                ticks: {
                                                     beginAtZero: true,
-                                                    fontSize:15.0,
+                                                    fontSize: 15.0,
                                                     fontColor: "white",
                                                 },
                                                 scaleLabel: {
                                                     display: true,
                                                     labelString: 'Marks',
-                                                    fontSize :20.0,
+                                                    fontSize: 20.0,
                                                     fontColor: "white",
                                                 },
                                                 gridLines: {
-                                                    display: false ,
+                                                    display: false,
                                                     color: "#b3b6b7"
                                                 },
                                             }],
                                             xAxes: [{
-                                                ticks:{
-                                                  fontSize: 15.0,
-                                                  fontColor: "white",
+                                                ticks: {
+                                                    fontSize: 15.0,
+                                                    fontColor: "white",
                                                 },
                                                 scaleLabel: {
                                                     display: true,
                                                     labelString: 'Subject',
-                                                    fontSize : 20.0,
+                                                    fontSize: 20.0,
                                                     fontColor: "white",
                                                 }
                                             }]
-                                          },
-                                          responsive: true,
-                                          animation: {
-                                             duration: 4000,
-                                             easing: 'easeInOutQuart'
-                                         }
-                                        
+                                        },
+                                        responsive: true,
+                                        animation: {
+                                            duration: 4000,
+                                            easing: 'easeInOutQuart'
+                                        }
+
                                     }
                                 });
                             },
-                            error:function(data){
+                            error: function (data) {
                                 console.log('Error!');
                             }
                         });
-                    </script>              
+                    </script>
+                </div>
             </div>
+
         </div>
-        <a href="" class="custom-card"></a>
+        <!-- <a href="" class="custom-card"></a> -->
+
+
+        <div class="col-sm-6 text-center">
+
+
+            <div class="card text-center text-white bg-dark mb-3">
+                <div class="card-body">
+                    <h1 class="display-4">Unit Test</h1>
+
+
+                    <!-- Charts.js -->
+                    <canvas id="genderChart1" width="1000"></canvas>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+                    <script>
+                        $.ajax({
+                            method: 'GET',
+                            url: '/data/',
+                            success: function (data) {
+                                console.log(data);
+                                new Chart(document.getElementById("genderChart1"), {
+                                    type: 'bar',
+                                    data: {
+                                        labels: data.label_data,
+
+                                        datasets: [
+
+                                            {
+                                                label: "Unit Test(Out of 30)",
+                                                backgroundColor: "rgba(39, 174, 96)",
+                                                borderColor: "rgba(62, 149, 205, 1)",
+                                                pointBackgroundColor: "rgba(62, 149, 205, 1)",
+                                                data: data.unittest_data,
+                                            },
+
+                                        ]
+
+                                    },
+                                    options: {
+                                        legend: {
+                                            labels: {
+                                                fontSize: 18,
+                                                fontColor: "white"
+                                            }
+                                        },
+                                        title: {
+                                            display: true,
+                                            text: "Exam wise Subject Marks",
+                                            fontSize: 22.0
+                                        },
+
+                                        scales: {
+                                            yAxes: [{
+                                                ticks: {
+                                                    beginAtZero: true,
+                                                    fontSize: 15.0,
+                                                    fontColor: "white",
+                                                },
+                                                scaleLabel: {
+                                                    display: true,
+                                                    labelString: 'Marks',
+                                                    fontSize: 20.0,
+                                                    fontColor: "white",
+                                                },
+                                                gridLines: {
+                                                    display: false,
+                                                    color: "#b3b6b7"
+                                                },
+                                            }],
+                                            xAxes: [{
+                                                ticks: {
+                                                    fontSize: 15.0,
+                                                    fontColor: "white",
+                                                },
+                                                scaleLabel: {
+                                                    display: true,
+                                                    labelString: 'Subject',
+                                                    fontSize: 20.0,
+                                                    fontColor: "white",
+                                                }
+                                            }]
+                                        },
+                                        responsive: true,
+                                        animation: {
+                                            duration: 4000,
+                                            easing: 'easeInOutQuart'
+                                        }
+
+                                    }
+                                });
+                            },
+                            error: function (data) {
+                                console.log('Error!');
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+
+        </div>
+
     </div>
-    <div class="col-sm-1 text-center"></div>
+    <div class="row h-100 align-items-center" style="margin: 10px;">
+        <div class="col-sm-3 text-center"></div>
+        <div class="col-sm-6 text-center">
+
+
+            <div class="card text-center text-white bg-dark mb-3">
+                <div class="card-body">
+                    <h1 class="display-4">Final Test</h1>
+
+                    <!-- Charts.js -->
+                    <canvas id="genderChart2" width="1000"></canvas>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+                    <script>
+                        $.ajax({
+                            method: 'GET',
+                            url: '/data/',
+                            success: function (data) {
+                                console.log(data);
+                                new Chart(document.getElementById("genderChart2"), {
+                                    type: 'bar',
+                                    data: {
+                                        labels: data.label_data,
+
+                                        datasets: [
+
+                                            {
+                                                label: "Final Test(Out of 70)",
+                                                backgroundColor: "rgba( 52, 152, 219 )",
+                                                borderColor: "rgba(62, 149, 205, 1)",
+                                                pointBackgroundColor: "rgba(62, 149, 205, 1)",
+                                                data: data.finaltest_data,
+                                            },
+                                        ]
+
+                                    },
+                                    options: {
+                                        legend: {
+                                            labels: {
+                                                fontSize: 18,
+                                                fontColor: "white"
+                                            }
+                                        },
+                                        title: {
+                                            display: true,
+                                            text: "Exam wise Subject Marks",
+                                            fontSize: 22.0
+                                        },
+
+                                        scales: {
+                                            yAxes: [{
+                                                ticks: {
+                                                    beginAtZero: true,
+                                                    fontSize: 15.0,
+                                                    fontColor: "white",
+                                                },
+                                                scaleLabel: {
+                                                    display: true,
+                                                    labelString: 'Marks',
+                                                    fontSize: 20.0,
+                                                    fontColor: "white",
+                                                },
+                                                gridLines: {
+                                                    display: false,
+                                                    color: "#b3b6b7"
+                                                },
+                                            }],
+                                            xAxes: [{
+                                                ticks: {
+                                                    fontSize: 15.0,
+                                                    fontColor: "white",
+                                                },
+                                                scaleLabel: {
+                                                    display: true,
+                                                    labelString: 'Subject',
+                                                    fontSize: 20.0,
+                                                    fontColor: "white",
+                                                }
+                                            }]
+                                        },
+                                        responsive: true,
+                                        animation: {
+                                            duration: 4000,
+                                            easing: 'easeInOutQuart'
+                                        }
+
+                                    }
+                                });
+                            },
+                            error: function (data) {
+                                console.log('Error!');
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-sm-3 text-center"></div>
     </div>
 </div>
+
+
 
 
 

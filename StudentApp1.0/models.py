@@ -19,8 +19,10 @@ class StudentModell(models.Model):
     ]
     class_id = models.ForeignKey('ClassModell', on_delete=models.CASCADE)
     blood_group = models.CharField(max_length=5)
-    
     fee_status = models.CharField(max_length=50)
+
+    def get_studentid(self):
+        return self.student_id
 
     def getfname(self):
         return self.student_fname
@@ -31,6 +33,16 @@ class StudentModell(models.Model):
     def getrollno(self):
         return self.rollno
 
+    def getdob(self):
+        return self.dob
+
+    def getaddress(self):
+        return self.address
+
+    def getbloodgroup(self):
+        return self.blood_group
+
+    #To access student's parent
     def getparentname(self):
         return self.student_mname+" "+self.student_lname
 
@@ -38,7 +50,7 @@ class StudentModell(models.Model):
         return self.class_id
 
     def getstatus(self):
-        return self.fee_status    
+        return self.fee_status
 
 
 class ClassModell(models.Model):
@@ -49,34 +61,63 @@ class ClassModell(models.Model):
     def getclassname(self):
         return self.class_name
 
+    def getclassid(self):
+        return self.class_id
+
 
 class ParentModell(models.Model):
     default_value = '999'
-    parent_id = models.AutoField(primary_key=True, default=default_value, auto_created=True)
+    parent_id = models.AutoField(
+        primary_key=True, default=default_value, auto_created=True)
     parent_fname = models.CharField(max_length=50, default='null')
     parent_mname = models.CharField(max_length=50, default='null')
     parent_lname = models.CharField(max_length=50, default='null')
-    
+
+    def getparentid(self):
+        return self.parent_id
 
     def getfullname(self):
         return self.parent_fname+" "+self.parent_mname+" "+self.parent_lname
 
-class StudentParent(models.Model):
-    student_id = models.ForeignKey('StudentModell', on_delete=models.CASCADE, default=99)
-    parent_id = models.ForeignKey('ParentModell', on_delete=models.CASCADE, default=99, )
 
+class STmapping(models.Model):
+    student_id = models.ForeignKey('StudentModell', on_delete=models.CASCADE)
+    parent_id = models.ForeignKey('ParentModell', on_delete=models.CASCADE)
+
+    def getstudent_id(self):
+        return self.student_id
+
+    def getparent_id(self):
+        return self.parent_id
+
+
+class StudentParent(models.Model):
+    student_id = models.ForeignKey('StudentModell', on_delete=models.CASCADE)
+    parent_id = models.ForeignKey('ParentModell', on_delete=models.CASCADE)
+
+    def getstudent_id(self):
+        return self.student_id
+
+    def getparent_id(self):
+        return self.parent_id
 
 
 class Student_attendence(models.Model):
-    student_id = models.OneToOneField(StudentModell,on_delete=models.CASCADE,to_field='student_id', primary_key=True, default=1)
+    student_id = models.OneToOneField(
+        StudentModell, on_delete=models.CASCADE, to_field='student_id', primary_key=True, default=1)
     class_id = models.ForeignKey('ClassModell', on_delete=models.CASCADE)
-    # noofdays_attended = models.IntegerField()
-    # total_days = models.IntegerField()
     attendence_percent = models.IntegerField()
-   
-         
     # def getattnedence_percent(self):
     #     return (self.noofdays_attended/self.total_days)*100
+
+    def getstudent_id(self):
+        return self.student_id
+
+    def getclass_id(self):
+        return self.class_id
+
+    def getattend(self):
+        return self.attendence_percent
 
 
 class SubjectModell(models.Model):
@@ -84,13 +125,20 @@ class SubjectModell(models.Model):
     subject_name = models.CharField(max_length=30)
     class_id = models.ForeignKey('ClassModell', on_delete=models.CASCADE)
 
+    def getstubject_id(self):
+        return self.subject_id
+
+    def getclass_id(self):
+        return self.class_id
+
     def getsubjname(self):
         return self.subject_name
 
 
 class Student_marks(models.Model):
     marks_id = models.AutoField(primary_key=True)
-    student_id = models.ForeignKey('StudentModell', on_delete=models.CASCADE, default=1)
+    student_id = models.ForeignKey(
+        'StudentModell', on_delete=models.CASCADE, default=1)
     subject_id = models.ForeignKey('SubjectModell', on_delete=models.CASCADE)
     class_id = models.ForeignKey('ClassModell', on_delete=models.CASCADE)
     year = models.IntegerField()
@@ -104,6 +152,18 @@ class Student_marks(models.Model):
     ]
     pass_fail = models.CharField(choices=pfstatus, max_length=10)
 
+    def getstudent_id(self):
+        return self.student_id
+
+    def getstubject_id(self):
+        return self.subject_id
+
+    def getclass_id(self):
+        return self.class_id
+
+    def getmark_id(self):
+        return self.marks_id
+
     def getmarks(self):
         return self.marks
 
@@ -113,6 +173,7 @@ class Student_marks(models.Model):
     def getpassfail(self):
         return self.pass_fail
 
+
 class ExamModell(models.Model):
     ClassTest = 'Class Test'
     UnitTest = 'Unit Test'
@@ -121,20 +182,20 @@ class ExamModell(models.Model):
     FinalMarks = 70
     ClassMarks = 20
     exam_types = [
-        (ClassTest,'Class Test'),
-        (UnitTest,'Unit Test'),
-        (FinalTest,'Final Test'),
+        (ClassTest, 'Class Test'),
+        (UnitTest, 'Unit Test'),
+        (FinalTest, 'Final Test'),
     ]
     exam_tot_marks = [
-        (ClassMarks,20),
-        (UnitMarks,30),
-        (FinalMarks,70),
+        (ClassMarks, 20),
+        (UnitMarks, 30),
+        (FinalMarks, 70),
     ]
     typeexam = models.CharField(max_length=50, choices=exam_types)
     totalexammarks = models.IntegerField(choices=exam_tot_marks)
-    
+
     def getexamtype(self):
          return self.typeexam
-    def getexamtotmarks(self):
-        return self.totalexammarks            
 
+    def getexamtotmarks(self):
+        return self.totalexammarks
