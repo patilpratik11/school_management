@@ -1,0 +1,61 @@
+{% extends 'common/base.html' %}
+{% block content %}
+
+<!-- ---------- -->
+
+
+<!-- ---------- -->
+
+
+	<div class="card text-center bg-light border-dark" style="height:50px">
+		<h2>Marks list</h2>
+	</div>
+	
+	<div class="container">
+		<div class="card bg-dark border-dark" style="margin:10px">
+				<table class="table text-center text-white table-bordered">
+			
+						<tr>
+							<td>Class</td>
+							{% for x in class %}
+								<td>{{x}}</td>
+							{% endfor %}
+						</tr>
+						
+						<tr>
+							<td>Roll No</td>
+							{% for x in roll %}
+								<td>{{x}}</td>
+							{% endfor %}				
+						</tr>
+						
+						<tr>
+							<td>Subject Id</td>
+							{% for x in subject %}
+								<td>{{x}}</td>
+							{% endfor %}					
+						</tr>
+						
+						<tr>
+							<td>Marks</td>
+							{% for x in marks %}
+								<td>{{x}}</td>
+							{% endfor %}
+						</tr>
+							
+						<tr>
+							<td>Exam</td>
+							{% for x in exam %}
+								<td>{{x}}</td>
+							{% endfor %}
+						</tr>
+					</table>	
+			
+			<div>
+				{% for message in messages %}
+				<h3> {{message}} </h3>
+				{% endfor %}
+			</div>
+	</div>
+</div>
+{% endblock %}

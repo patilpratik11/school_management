@@ -1,0 +1,185 @@
+{% extends 'common/base.html' %}
+{% block content %}
+{% load static %}
+
+<!-- ------------- -->
+<div class="container-fluid" style="margin-bottom: 10px;">
+    <div class="row h-100 align-items-center">
+        <div class="col-sm text-center" style="padding-left: 0px; padding-right: 0px;">
+            <div class="card text-white bg-dark mb-3" style="border-radius: 0px;">
+                <div class="container-fluid" style="margin: 10px;">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-sm text-center">
+                            <img src="{% static 'common/studentsmall.png' %}"
+                                class="rounded-circle mx-auto d-block mt-3" height="200px" width="200px"
+                                alt="Cinque Terre">
+                        </div>
+                        <div class="col-sm text-left">
+                            
+                            <h1 class="display-4">{{first}} {{last}}</h1>
+                           
+                            <div class="row h-100 align-items-left">
+                                <div class="col-sm text-left">
+                                    <h5 style="margin-bottom: 10px;">Class Teacher -<span class="badge badge-light"> {{class}} </span>
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="row h-100 align-items-left">
+                                <div class="col-sm text-left">
+									
+									<h5 style="margin-bottom: 10px;">Subjects Taught - {% for i in subject %}<span class="badge badge-light" style="margin-left: 10px;">{{i}}</span>{% endfor %}
+										
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="row h-100 align-items-left">
+                                <div class="col-sm text-left">
+									
+									<h5 style="margin-bottom: 10px;">Classes Taught -
+										{% for i in classes %} 
+										{% if i != class %}
+										<span class="badge badge-light">{{i}}</span>
+										{% endif %}
+										{% endfor %}</h5>
+									
+                                </div>
+                            </div>
+                            <div class="row h-100 align-items-left">
+                                <div class="col-sm text-left">
+                                    <button type="button" class="btn btn-primary btn-sm">View Details</button>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ------------- -->
+
+	<!-- <div class="card text-center bg-light border-dark" style="height:50px">
+		<h1>Hello, {{first}} {{last}} </h1>
+	</div>
+	
+	<div class="container">
+		<div class="card bg-light border-dark" style="margin:10px">
+			<h2>Class Teacher</h2><br>
+			<small>Class: </small>{{class}}
+		</div>
+
+		<div class="card bg-light border-dark" style="margin:10px">
+			<h2>Teaching Subjects</h2><br>
+			<small>Subjects:</small>
+			{% for i in subject %}
+				{{i}}
+			{% endfor %}
+			<small>Class:</small>
+			{% for i in classes %}
+				{{i}}
+			{% endfor %}
+		</div> -->
+
+		<div class="container-fluid">
+				<div class="row h-100 align-items-center" style="margin: 10px;">
+					<div class="col-sm-4 text-center">
+						<div class="card text-center text-white bg-dark mb-3" style="width: 30rem;">
+							<div class="card-body">
+								
+								<h1 class="display-4">Marks</h1>
+								<a class="btn btn-primary" href="{% url 'display_marks' %}">View Marks</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4 text-center">
+							<div class="card text-center text-white bg-dark mb-3" style="width: 30rem;">
+								<div class="card-body">
+									
+									<h1 class="display-4">Attendance</h1>
+									<a class="btn btn-primary" href="{% url 'display_attendance' %}">View Attendance</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4 text-center">
+								<div class="card text-center text-white bg-dark mb-3" style="width: 30rem;">
+									<div class="card-body">
+										
+										<h1 class="display-4">Timetable</h1>
+										<a class="btn btn-primary" href="{% url 'display_timetable' %}">View Timetable</a>
+									</div>
+								</div>
+							</div>
+				</div>
+				<div class="row h-100 align-items-center" style="margin: 10px;">
+						<div class="col-sm-4 text-center">
+							<div class="card text-center text-white mb-3" style="width: 30rem; background: #18a3e8;">
+								<div class="card-body">
+									
+									<h1 class="display-4">Add Subject</h1>
+									<a class="btn btn-dark" href="{% url 'addsubject' %}" style="font-size: 30px;"> + </a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4 text-center">
+								<div class="card text-center text-white mb-3" style="width: 30rem; background: #18a3e8;">
+									<div class="card-body">
+										
+										<h1 class="display-4">Add Marks</h1>
+										<a class="btn btn-dark" href="{% url 'addmarks' %}" style="font-size: 30px;"> + </a>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-4 text-center">
+									<div class="card text-center text-white mb-3" style="width: 30rem; background: #18a3e8;">
+										<div class="card-body">
+											
+											<h1 class="display-4">Add Exams</h1>
+											<a class="btn btn-dark" href="{% url 'addexams' %}" style="font-size: 30px;"> + </a>
+										</div>
+									</div>
+								</div>
+								
+						</div>
+						<div class="row h-100 align-items-center" style="margin: 10px;">
+								<div class="col-sm-6 text-center">
+									<div class="card text-center text-white bg-dark mb-3" style="background: #18a3e8;" >
+										<div class="card-body">
+											
+											<h1 class="display-4">Fill Attendence</h1>
+											<a class="btn btn-success" href="{% url 'addattend' %}" style="font-size: 30px;"> + </a>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6 text-center">
+										<div class="card text-center text-white bg-dark mb-3" style="background: #18a3e8;">
+											<div class="card-body">
+												
+												<h1 class="display-4">Change Timetable</h1>
+												<a class="btn btn-success" href="{% url 'changetable' %}">Change</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+		</div>
+
+		<!-- <div class="card bg-light border-dark" style="margin:10px">		
+			<br>
+				<a class="btn btn-primary" href="{% url 'display_marks' %}">View Marks</a>
+				<a class="btn btn-primary" href="{% url 'display_attendance' %}">View Attendance</a>
+				<a class="btn btn-primary" href="{% url 'display_timetable' %}">View Timetable</a>
+		</div> -->
+
+		<!-- <div class="card bg-light border-dark" style="margin:10px">		
+			<br>
+				<a class="btn btn-primary" href="{% url 'addsubject' %}">Add Subject</a>
+				<a class="btn btn-primary" href="{% url 'addmarks' %}">Add Marks</a>
+				<a class="btn btn-primary" href="{% url 'addattend' %}">Add Attendance</a>
+				<a class="btn btn-primary" href="{% url 'addexams' %}">Add Exams</a>
+				<a class="btn btn-primary" href="{% url 'changetable' %}">Change Timetable</a>
+		</div>
+	</div> -->
+
+{% endblock %}
