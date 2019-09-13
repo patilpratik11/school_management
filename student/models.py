@@ -9,14 +9,9 @@ class StudentModell(models.Model):
     student_mname = models.CharField(max_length=50)
     student_lname = models.CharField(max_length=50)
     rollno = models.IntegerField()
-    dob = models.DateField()
+    dob = models.CharField(max_length=50)
     address = models.TextField()
-    Male = 'M'
-    Female = 'F'
-    gender = [
-        (Male, 'Male'),
-        (Female, 'Female'),
-    ]
+    gender = models.CharField(max_length=20)
     class_id = models.ForeignKey('ClassModell', on_delete=models.CASCADE)
     blood_group = models.CharField(max_length=5)
     fee_status = models.CharField(max_length=50)

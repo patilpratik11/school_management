@@ -8,28 +8,32 @@
         <img src="{% static 'common/student.png' %}" class="rounded-circle mx-auto d-block" height="250px" width="250px"
             alt="Cinque Terre">
         <h1 class="display-5 text-center">Student</h1>
-        <form>
+        
+        <form method="post" action="loginstudent">
+        				{% csrf_token %}
             <div class="form-row">
                 <div class="col"></div>
                 <div class="col">
                     <div class="form-row form-group">
-                        <label for="exampleInputEmail1">Name</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            placeholder="Enter email">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                            else.</small>
+                        <label>First Name</label>
+                        <input type="text" class="form-control" name="first_name">                
                     </div>
+                    
+                    <div class="form-row form-group">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control" name="last_name">                
+                    </div>
+                    
                     <div class="form-row form-group">
                         <div class="form-row form-group">
                             <div>
                                 <label>Date of Birth</label>
-                                <input type="date" class="form-control" id="exampleInputDOB1"
-                                    placeholder="Date of Birth">
+                                <input type="text" class="form-control" placeholder="YYYY-MM-DD" name="dob">
                             </div>
                         </div>
                     </div>
                     <div class="form-row form-group">
-                        <a href="{% url 'student_dashboard' %}" class="btn btn-primary">Login</a>
+                        <button type="submit" class="btn btn-primary">Login</button>
                     </div>
                 </div>
                 <div class="col"></div>
@@ -38,5 +42,10 @@
     </div>
 </div>
 
+<div>
+	{% for message in messages %}
+	<h3> {{message}} </h3>
+	{% endfor %}
+</div>
 
 {% endblock %}

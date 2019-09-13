@@ -14,8 +14,33 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from sms import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('sms.urls')),
+    path('', include('student.urls')),
+    path('',include('adminapp.urls')),
+    path('loginstudent/',views.loginstudent, name="loginstudent"),
+    path('type/',views.acctype, name="accountstype_page"),
+    path('student/',views.studentLogin, name="student_login"),
+    path('teacher/',views.teach_Login, name="teacher_login"),
+    path('parent/',views.parent_Login, name="parent_login"),
+    path('admins/loginadmin', views.loginAdmin, name='loginadmin'),
+    path('admins/',views.admin_Login, name="admins_login"),
+    path('addsubject/', views.addsubject, name="addsubject"),
+    path('addmarks/', views.addmarks, name="addmarks"),
+    path('addattend/', views.addattend, name="addattend"),
+    path('addexams/', views.addexams, name="addexams"),
+    path('attendance/', views.attendance, name="attendance"),
+    path('marks/', views.marks, name="marks"),
+    path('exams/', views.exams, name="exams"),
+    path('subject/', views.subject, name="subject"),
+    path('display_marks/', views.display_marks, name="display_marks"),
+    path('display_attendance/', views.display_attendance, name="display_attendance"),
+    path('display_timetable/', views.display_timetable, name="display_timetable"),
+    path('changetable/', views.changetable, name="changetable"),
+    path('timetable/', views.timetable, name="timetable"),
 ]
+
