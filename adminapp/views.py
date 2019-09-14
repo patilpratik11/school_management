@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import AdminModel
-from student.models import StudentModell,ClassModell
+from student.models import StudentModell,ClassModell,ParentModell,STmapping
 from sms.models import Teacher,Subject
 from django.views.decorators.csrf import csrf_protect
 from django.contrib import messages
@@ -21,13 +21,23 @@ def addStudent(request):
         rollno = request.POST.get("rollno")
         dob = request.POST.get("dob")
         address = request.POST.get("address")
-        gender = request.POST.get("M")
+        gender = request.POST.get("gender")
         class_id = request.POST.get("class")
         classobj = ClassModell.objects.get(class_id=class_id)
         blood_group = request.POST.get("bg")
         fee_status = request.POST.get("fee")
+        parent_mname = request.POST.get("pmiddle_name")
+        email = request.POST.get("email")
+        password = request.POST.get("password")
+        mobile = request.POST.get("mobile")
         query = StudentModell(student_fname=student_fname,student_mname=student_mname,student_lname=student_lname,rollno=rollno,gender=gender,address=address,class_id=classobj,dob=dob,blood_group=blood_group,fee_status=fee_status)
         query.save()
+        query1 = ParentModell(parent_fname = student_mname,parent_mname = parent_mname,parent_lname= student_lname,mobile=mobile,email= email,password=password)
+        query1.save()
+        sobj = StudentModell.objects.last()
+        pobj = ParentModell.objects.last()
+        query2 = STmapping(student_id = sobj,parent_id = pobj)
+        query2.save()
         messages.info(request, 'Student Added Successfully')
         return render(request,'common/adminDashboard.html')
     except Exception as e:
@@ -115,8 +125,12 @@ def viewStudent(request):
         rollno = request.POST.get("rollno")
         class_id = class_name
         s_obj = StudentModell.objects.get(rollno=rollno,class_id=class_id,student_fname=first_name) 
+        pname = s_obj.getparentname()
+        lname = s_obj.getlname()
+        parentobj = ParentModell.objects.get(parent_fname=pname,parent_lname=lname)
         print(s_obj)
-        context = {'student':s_obj}
+        print(parentobj)
+        context = {'student':s_obj,'parent':parentobj}
         return render(request,'common/viewStudent.html',context)
     except Exception as e:
         messages.info(request,e)
@@ -127,6 +141,12 @@ def viewTeacher(request):
 
 def changePassword(request):
     return render(request,'common/adminDashboard.html')
+
+def mailParent(request):
+    request_context = RequestContext(request)
+    
+    receiver = request.POST.get("toemail")
+
 
 
 

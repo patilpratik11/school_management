@@ -39,7 +39,10 @@ class StudentModell(models.Model):
 
     #To access student's parent
     def getparentname(self):
-        return self.student_mname+" "+self.student_lname
+        return self.student_mname
+
+    def getlname(self):
+        return self.student_lname
 
     def getclassname(self):
         return self.class_id
@@ -52,6 +55,7 @@ class ClassModell(models.Model):
     default_value = '999'
     class_id = models.AutoField(primary_key=True, default=default_value)
     class_name = models.CharField(max_length=10, default='8A')
+    
 
     def getclassname(self):
         return self.class_name
@@ -61,15 +65,27 @@ class ClassModell(models.Model):
 
 
 class ParentModell(models.Model):
-    default_value = '999'
+    
     parent_id = models.AutoField(
-        primary_key=True, default=default_value, auto_created=True)
+        primary_key=True,auto_created=True)
     parent_fname = models.CharField(max_length=50, default='null')
     parent_mname = models.CharField(max_length=50, default='null')
     parent_lname = models.CharField(max_length=50, default='null')
+    password = models.CharField(max_length=50)
+    email = models.CharField(max_length=50,unique=True)
+    mobile = models.CharField(max_length=20)
 
     def getparentid(self):
         return self.parent_id
+    
+    def getPassword(self):
+        return self.password
+    
+    def getemail(self):
+        return self.email
+    
+    def getmobile(self):
+        return self.mobile
 
     def getfullname(self):
         return self.parent_fname+" "+self.parent_mname+" "+self.parent_lname

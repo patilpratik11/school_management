@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'school_management.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-'NAME': 'schoolmanagement',
+'NAME': 'studentmanagement',
 'USER': 'root',
 'PASSWORD': '',
 'HOST': '',

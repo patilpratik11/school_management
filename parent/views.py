@@ -33,7 +33,7 @@ def viewchild(request):
         return render(request,'common/viewchild.html',{'students':students,"att":att,'teacher':teacher})
     except Exception as e:
         messages.info(request,e)
-        return render(request,'common/viewchild.html',{'students':students,"att":att})
+        return render(request,'common/viewchild.html')
 
 
 

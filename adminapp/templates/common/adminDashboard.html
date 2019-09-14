@@ -64,69 +64,89 @@
                                                 <label class="lead float-left">Last Name:</label>
                                                 <input type="text" class="form-control" name="last_name">
                                     </div>
+                                    <hr>
+                                    <div class="form-group">
+                                            <label class="lead float-left">Class:</label>
+                                            <select class="form-control" name="class" required>
+                                                <option value=''>Please Select an Option</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                            </select>
+                                        </div>
                                     <div class="form-group">
                                             <label class="lead float-left">Roll Number:</label>
                                             <input type="text" class="form-control" name="rollno">
                                     </div>
                                     <div class="form-group">
-                                        <label class="lead float-left">DOB:</label>
-                                        <input type="text" class="form-control" placeholder="YYYY-MM-DD" name="dob">
-                                    </div>
-                                    <div class="form-group">
-                                            <label class="lead float-left">Address:</label>
-                                            <textarea class="form-control" rows="5" name="address"></textarea>
-                                        </div>
-                                    <div class="form-group">
-                                         <left>   Gender:
-                                            <div class="form-check-inline">
-                                                    <label class="form-check-label">
-                                                      <input type="radio" class="form-check-input" name="M">Male
-                                                    </label>
-                                                  </div>
-                                                  <div class="form-check-inline">
-                                                    <label class="form-check-label">
-                                                      <input type="radio" class="form-check-input" name="F">Female
-                                                    </label>
-                                                  </div></left>                                    </div>  
-                                        <div class="form-group">
-                                        <label class="lead float-left">Class:</label>
-                                        <select class="form-control" name="class" required>
-                                            <option value=''>Please Select an Option</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                            <label class="lead float-left">Blood Group:</label>
-                                            <select class="form-control" name="bg" required>
-                                                <option value=''>Please Select an Option</option>
-                                                <option value="O+">O+</option>
-                                                <option value="A+">A+</option>
-                                                <option value="B+">B+</option>
-                                                <option value="AB+">AB+</option>
-                                                <option value="O-">O-</option>
-                                                <option value="A-">A-</option>
-                                                <option value="B-">B-</option>
-                                                <option value="AB-">AB-</option>
-                                                
-                                            </select>
+                                            <label class="lead float-left">DOB:</label>
+                                            <input type="text" class="form-control" placeholder="YYYY-MM-DD" name="dob">
                                         </div>
                                         <div class="form-group">
-                                                <label class="lead float-left">Fee status:</label>
-                                                <select class="form-control" name="fee" required>
+                                                <label class="lead float-left">Address:</label>
+                                                <textarea class="form-control" rows="5" name="address"></textarea>
+                                            </div>
+                                        <div class="form-group">
+                                               Gender:
+                                                <div class="form-check-inline">
+                                                        <select class="form-control" name="gender" required>
+                                                                <option value=''>Please Select an Option</option>
+                                                                <option value="Male">Male</option>
+                                                                <option value="Female">Female</option>
+                                                                
+                                                            </select>
+                                                      </div>                                    
+                                                    </div>  
+                                            
+                                        <div class="form-group">
+                                                <label class="lead float-left">Blood Group:</label>
+                                                <select class="form-control" name="bg" required>
                                                     <option value=''>Please Select an Option</option>
-                                                    <option value="Pending">Pending</option>
-                                                    <option value="Paid">Paid</option>
+                                                    <option value="O+">O+</option>
+                                                    <option value="A+">A+</option>
+                                                    <option value="B+">B+</option>
+                                                    <option value="AB+">AB+</option>
+                                                    <option value="O-">O-</option>
+                                                    <option value="A-">A-</option>
+                                                    <option value="B-">B-</option>
+                                                    <option value="AB-">AB-</option>
+                                                    
                                                 </select>
                                             </div>
+                                            <div class="form-group">
+                                                    <label class="lead float-left">Fee status:</label>
+                                                    <select class="form-control" name="fee" required>
+                                                        <option value=''>Please Select an Option</option>
+                                                        <option value="Pending">Pending</option>
+                                                        <option value="Paid">Paid</option>
+                                                    </select>
+                                                </div>
+                                    <hr>
+                                    <div class="form-group">
+                                            <label class="lead float-left"> Parent Middle Name:</label>
+                                            <input type="text" class="form-control" name="pmiddle_name">
+                                        </div>
+                                    <div class="form-group">
+                                                <label class="lead float-left">Email:</label>
+                                                <input type="email" class="form-control" name="email">
+                                    </div>
+                                    <div class="form-group">
+                                            <label class="lead float-left">Mobile Number:</label>
+                                            <input type="text" class="form-control" name="mobile">
+                                    </div>
+                                    <div class="form-group">
+                                            <label class="lead float-left">Parent Password:</label>
+                                            <input type="text" class="form-control" name="password">
+                                    </div>
+                                    <hr>
+
 
 
                                     <button type="button" class="btn btn-outline-danger mx-auto d-block float-right m-3" data-dismiss="modal">CLOSE</button>
