@@ -10,8 +10,7 @@ urlpatterns = [
 	path('',views.index, name='index'),
     	path('teacher/loginteacher', views.loginTeacher, name='loginteacher'),
     	path('student/loginstudent', views.loginstudent, name='loginstudent'),
-	   	path('admin/loginadmin', views.loginAdmin, name='loginadmin'),
-#   	path('parent/login', views.loginParent, name='loginparent'),
+	   	path('parent/loginparent', views.loginParent, name='loginparent'),
 ]
 
 if settings.DEBUG:

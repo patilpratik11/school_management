@@ -7,6 +7,7 @@ from django.conf.urls.static import static
 from .views import get_data
 
 
+
 urlpatterns = [
     url('dashboard/',views.studentDashboard, name="student_dashboard"),
     url('eanalysis/',views.eanalysis, name="examana"),

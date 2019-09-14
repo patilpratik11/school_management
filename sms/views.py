@@ -235,6 +235,31 @@ def loginstudent(request):
 		else:		
 			messages.info(request, 'Invalid credentials')
 			return render(request, 'common/login_student.html')
+
+def loginParent(request):
+
+	email_id = request.POST.get("email")
+	password = request.POST.get("password")
+
+	query = ParentModell.objects.get(email=email_id)
+	
+
+	if password == query.getPassword():
+		full_name = query.getfullname()
+		id = query.getparentid()
+		stmappingobject = STmapping.objects.filter(parent_id=id)
+		context={
+			'object':stmappingobject,'dbuser':query, 'full_name':full_name
+		}
+		#studentobj = StudentModell.objects.get(student_id=studentobject)
+		#classinfo = studentobject.class_id
+		#attendence = Student_attendence.objects.filter(class_id_id = studentobj.class_id)
+		return render(request, 'common/parentDashboard.html', context)
+
+	else:
+		messages.info(request, 'Invalid credentials')
+		return render(request, 'common/teach_parent_admin_login.html', {"id" : 2})
+
 	
 def loginTeacher(request):
 	

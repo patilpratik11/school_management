@@ -1,0 +1,81 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+{% load static %}
+
+
+<!-- Header -->
+<div class="container-fluid" style="margin-bottom: 10px;">
+    <div class="row h-100 align-items-center">
+        <div class="col-sm text-center" style="padding-left: 0px; padding-right: 0px;">
+            <div class="card text-white bg-dark mb-3" style="border-radius: 0px;">
+                <div class="container-fluid" style="margin: 10px;">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-sm text-center">
+                            <img src="{% static 'common/studentsmall.png' %}"
+                                class="rounded-circle mx-auto d-block mt-3" height="200px" width="200px"
+                                alt="Cinque Terre">
+                        </div>
+                        <div class="col-sm text-left">
+                            
+                            <h1 class="display-4">{{ dbuser.getfullname }}</h1>
+                            
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% for item in object %}
+			
+<form method="post" action="viewchild">	
+        <input type="hidden" name="student" value="{{item.student_id.get_studentid}}" />
+   
+        {% csrf_token %}	
+<div class="container container-fluid" style="width:25%">
+
+    <div class="card-deck">
+        <div class="card d-block shadow p-4 mb-4 bg-white">
+            <div class="card-body text-center">
+                <img src="{% static 'common/studentsmall.png' %}" alt="Card image" style="width:25%"><br>
+                <p class="card-text"></p>
+               
+                            <div class="row h-100 align-items-left">
+                                <div class="col-sm text-left">
+                            
+                                   <center><h5 style="margin-bottom: 10px;"><span class="badge badge-light">Student- {{item.student_id.getfullname }}</span></h5></center>
+                                   
+                                </div>
+                            </div>
+                            <div class="row h-100 align-items-left">
+                                <div class="col-sm text-left">
+                            
+                                   <center><h5 style="margin-bottom: 10px;"><span class="badge badge-light">Class - {{item.student_id.getclassname.getclassname}} </span></h5></center>
+                                   
+                                </div>
+                            </div>
+                            
+                            <div class="row h-100 align-items-left">
+                                <div class="col-sm text-left">
+                                  <center><h5 style="margin-bottom: 10px;"><span class="badge badge-light">Roll no - {{item.student_id.getrollno}}</span></center>
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="row h-100 align-items-left">
+                                <div class="col-sm text-left">
+                                    <center>   <button type="submit" class="btn btn-primary btn-sm">View Details</button></center>
+                                </div>
+                            </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+{% endfor %}
+
+
+
+{% endblock %}
