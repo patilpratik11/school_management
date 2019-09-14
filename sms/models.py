@@ -46,6 +46,9 @@ class ClassTeacher(models.Model):
 	
 	def getClassStr(self):
 		return str(self.class_name)
+
+	def getTeacher_id(self):
+		return self.teacher_id
 			
 
 class Subject(models.Model):

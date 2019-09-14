@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'sms.apps.SmsConfig',
     'student.apps.StudentConfig',
     'adminapp.apps.AdminappConfig',
+    'parent.apps.ParentConfig',
 ]
 
 MIDDLEWARE = [
@@ -79,7 +80,7 @@ WSGI_APPLICATION = 'school_management.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-'NAME': 'studentmanagement',
+'NAME': 'school_management',
 'USER': 'root',
 'PASSWORD': '',
 'HOST': '',

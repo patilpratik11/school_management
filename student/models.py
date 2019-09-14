@@ -11,7 +11,12 @@ class StudentModell(models.Model):
     rollno = models.IntegerField()
     dob = models.CharField(max_length=50)
     address = models.TextField()
-    gender = models.CharField(max_length=20)
+    Male = 'M'
+    Female = 'F'
+    gender = [
+        (Male, 'Male'),
+        (Female, 'Female'),
+    ]
     class_id = models.ForeignKey('ClassModell', on_delete=models.CASCADE)
     blood_group = models.CharField(max_length=5)
     fee_status = models.CharField(max_length=50)
@@ -59,6 +64,8 @@ class ClassModell(models.Model):
     def getclassid(self):
         return self.class_id
 
+    
+
 
 class ParentModell(models.Model):
     default_value = '999'
@@ -67,6 +74,11 @@ class ParentModell(models.Model):
     parent_fname = models.CharField(max_length=50, default='null')
     parent_mname = models.CharField(max_length=50, default='null')
     parent_lname = models.CharField(max_length=50, default='null')
+    password = models.CharField(max_length=50, default='null')
+    email = models.EmailField(max_length=200, unique=True)
+
+    def getPassword(self):
+        return self.password
 
     def getparentid(self):
         return self.parent_id
@@ -98,10 +110,23 @@ class StudentParent(models.Model):
 
 
 class Student_attendence(models.Model):
+    default_value="1"
     student_id = models.OneToOneField(
         StudentModell, on_delete=models.CASCADE, to_field='student_id', primary_key=True, default=1)
     class_id = models.ForeignKey('ClassModell', on_delete=models.CASCADE)
     attendence_percent = models.IntegerField()
+    January= models.IntegerField()
+    February = models.IntegerField()
+    March = models.IntegerField()
+    April = models.IntegerField()
+    May = models.IntegerField()
+    June = models.IntegerField()
+    July = models.IntegerField()
+    August = models.IntegerField()
+    September = models.IntegerField()
+    October = models.IntegerField()
+    November = models.IntegerField()
+    December = models.IntegerField()
     # def getattnedence_percent(self):
     #     return (self.noofdays_attended/self.total_days)*100
 
