@@ -380,6 +380,154 @@
                 </div>
             </div>
     </div>
+    <div class="card-deck">
+
+            <div class="card d-block shadow p-4 mb-4 bg-white">
+                    <div class="card-body text-center">
+                            
+                        <img class="card-img-top" src="{% static 'common/student.png' %}" alt="Card image" style="width:50%"><br>
+                        <p class="card-text">View Student</p>
+                        <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#myModal12">
+                            View
+                        </button>
+                        <!-- The Modal -->
+                        <div class="modal fade" id="myModal12">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+        
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title ">Enter Details</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+        
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                            <form action="viewstudent" method="post">
+                                                    {% csrf_token %}
+                                                    <div class="form-group">
+                                                            <label class="lead float-left">First Name:</label>
+                                                            <input type="text" class="form-control" name="first_name">
+                                                        </div>
+                                                        <div class="form-group">
+                                                                    <label class="lead float-left">Last Name:</label>
+                                                                    <input type="text" class="form-control" name="last_name">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                        <label class="lead float-left">Roll Number:</label>
+                                                                        <input type="text" class="form-control" name="rollno">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                            <label class="lead float-left">Class:</label>
+                                                                            <input type="text" class="form-control" name="class">
+                                                                        </div>
+                                                                    
+                                               <button type="button" class="btn btn-outline-danger mx-auto d-block float-right m-3" data-dismiss="modal">CLOSE</button>
+                                                <button type="submit" class="btn btn-outline-success float-right m-3">Submit</button>
+                                            </form>
+                                    </div>
+        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            <div class="card d-block shadow p-4 mb-4 bg-white">
+                    <div class="card-body text-center">
+                            
+                        <img class="card-img-top" src="{% static 'common/student.png' %}" alt="Card image" style="width:50%"><br>
+                        <p class="card-text">View Teacher</p>
+                        <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#myModal13">
+                            View
+                        </button>
+                        <!-- The Modal -->
+                        <div class="modal fade" id="myModal13">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+        
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title ">Enter Details</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+        
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <form action="viewteacher" method="post">
+                                                {% csrf_token %}
+                                                <div class="form-group">
+                                                        <label class="lead float-left">First Name:</label>
+                                                        <input type="text" class="form-control" name="first_name">
+                                                    </div>
+                                                <div class="form-group">
+                                                                <label class="lead float-left">Last Name:</label>
+                                                                <input type="text" class="form-control" name="last_name">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                    <label class="lead float-left">Email Id:</label>
+                                                                    <input type="email" class="form-control" name="email">
+                                                                </div>
+                                                                                                                    
+                                                                
+                                           <button type="button" class="btn btn-outline-danger mx-auto d-block float-right m-3" data-dismiss="modal">CLOSE</button>
+                                            <button type="submit" class="btn btn-outline-success float-right m-3">Submit</button>
+                                        </form>
+                                    </div>
+        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card d-block shadow p-4 mb-4 bg-white">
+                        <div class="card-body text-center">
+                                
+                            <img class="card-img-top" src="{% static 'common/student.png' %}" alt="Card image" style="width:50%"><br>
+                            <p class="card-text">Change Password</p>
+                            <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#myModal14">
+                                Change
+                            </button>
+                            <!-- The Modal -->
+                            <div class="modal fade" id="myModal14">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+            
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title ">Enter Details</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+            
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <form action="changepassword" method="post">
+                                                    {% csrf_token %}
+                                                    <div class="form-group">
+                                                            <label class="lead float-left">Email Id:</label>
+                                                            <input type="email" class="form-control" name="email">
+                                                        </div>
+                                                        <div class="form-group">
+                                                                <label class="lead float-left">Old Password:</label>
+                                                                <input type="email" class="form-control" name="old">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                    <label class="lead float-left">New Password:</label>
+                                                                    <input type="email" class="form-control" name="new">
+                                                                </div>
+                                                        
+                                                                    
+                                               <button type="button" class="btn btn-outline-danger mx-auto d-block float-right m-3" data-dismiss="modal">CLOSE</button>
+                                                <button type="submit" class="btn btn-outline-success float-right m-3">Submit</button>
+                                            </form>
+                                        </div>
+            
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
 </div>
         <div class="card bg-light border-dark" style="margin:10px">
             {% for message in messages %}

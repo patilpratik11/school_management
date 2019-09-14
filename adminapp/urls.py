@@ -14,6 +14,9 @@ urlpatterns = [
     url('removeteacher',views.removeTeacher, name="removeteacher"),
     url('addsubject',views.addSubject, name="addsubject"),
     url('removesubject',views.removeSubject, name="removesubject"),
+    url('viewstudent',views.viewStudent, name="viewstudent"),
+    url('viewteacher',views.viewTeacher, name="viewteacher"),
+    url('changepassword',views.changePassword, name="changepassword"),
 ]
 
 if settings.DEBUG:

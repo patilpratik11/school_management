@@ -105,6 +105,28 @@ def removeSubject(request):
     except Exception as e:
         messages.info(request,e)
         return render(request,'common/adminDashboard.html')
+   
+def viewStudent(request):
+    request_context = RequestContext(request)
+    try:
+        first_name = request.POST.get("first_name")
+        last_name = request.POST.get("last_name")
+        class_name = request.POST.get("class")
+        rollno = request.POST.get("rollno")
+        class_id = class_name
+        s_obj = StudentModell.objects.get(rollno=rollno,class_id=class_id,student_fname=first_name) 
+        print(s_obj)
+        context = {'student':s_obj}
+        return render(request,'common/viewStudent.html',context)
+    except Exception as e:
+        messages.info(request,e)
+        return render(request,'common/adminDashboard.html')
+
+def viewTeacher(request):
+    return render(request,'common/viewTeacher.html')
+
+def changePassword(request):
+    return render(request,'common/adminDashboard.html')
 
 
 

@@ -286,9 +286,7 @@ def loginAdmin(request):
 	if password == query.getPassword():
 		first_name = query.getfName()
 		last_name = query.getlName()
-		id = query.getId()
-		
-		return render(request, 'common/adminDashboard.html', {'first':first_name, 'last':last_name, 'id':id})
+		return render(request, 'common/adminDashboard.html', {'first':first_name, 'last':last_name})
 	else:
 		messages.info(request, 'Invalid credentials')
 		return render(request, 'common/teach_parent_admin_login.html', {"id" : 3 })

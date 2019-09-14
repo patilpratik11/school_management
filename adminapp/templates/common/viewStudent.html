@@ -1,0 +1,91 @@
+{% extends 'common/base.html' %}
+
+{% block content %}    
+
+{% load static %}
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<hr>
+    <div class="container mw-100">
+        <center>
+        <div class="panel-group ">
+            <div class="panel panel-info shadow w-75 p-4 mb-4 d-block">
+              <div class="panel-heading">Student Information</div>
+              <div class="panel-body">
+                    <table class="table table-condensed">
+                            <thead>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>Name</td>
+                                <td>{{student.getfullname}}</td>
+                             </tr>
+                              <tr>
+                                <td>Class</td>
+                                <td>{{student.getclassname.getclassname}}</td>
+                             </tr>
+                              <tr>
+                                <td>Roll Number</td>
+                                <td>{{student.getrollno}}</td>
+                              </tr>
+                              <tr>
+                                    <td>DOB</td>
+                                    <td>{{student.getdob}}</td>
+                                  </tr>
+                                  <tr>
+                                        <td>Blood Group</td>
+                                        <td>{{student.getbloodgroup}}</td>
+                                      </tr>
+                                      <tr>
+                                            <td>Fee Status</td>
+                                            <td>{{student.getstatus}}</td>
+                                         </tr>
+                            </tbody>
+                          </table></div>
+            </div>
+            <hr>
+            <div class="panel panel-info shadow w-75 p-4 mb-4 d-block ">
+                    <div class="panel-heading">Parent Information</div>
+                    <div class="panel-body">
+                          <table class="table table-condensed">
+                              <center>
+                                  <thead>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>Name</td>
+                                      <td></td>
+                                      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{student.getparentname}}</td>
+                                   </tr>
+                                    <tr>
+                                      <td>Address</td>
+                                      <td></td>
+                                      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{student.getaddress}}</td>
+                                   </tr>
+                                    <tr>
+                                      <td>Mobile Number</td>
+                                      <td></td>
+                                      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{student.getrollno}}</td>
+                                    </tr>
+                                    <tr>
+                                            <td>Email Id</td>
+                                            <td></td>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{student.getrollno}}</td>
+                                          </tr>
+                                          
+                                  </tbody>
+                                </center>
+                                </table></div>
+                  </div>       
+                      
+                </div>
+            </center>
+        
+    </div>
+    <hr>
+
+{% endblock %}
