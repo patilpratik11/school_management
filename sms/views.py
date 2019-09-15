@@ -3,8 +3,10 @@ from django.http import HttpResponse
 from sms.models import Teacher, ClassTeacher, SubjectTeacher, Subject, Attendance, Marks, Exam, Login, Timetable
 from django.contrib import messages
 import datetime
-from student.models import StudentModell, ClassModell, ParentModell, Student_attendence, Student_marks, ExamModell,SubjectModell, StudentParent, STmapping
+from student.models import LoginS, StudentModell, ClassModell, ParentModell, Student_attendence, Student_marks, ExamModell,SubjectModell, StudentParent, STmapping
 from adminapp.models import AdminModel
+from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
+
 # Create your views here.
 
 def index(request):
@@ -15,6 +17,7 @@ def acctype(request):
 
 def studentLogin(request):
 	Login.objects.all().delete()
+	
 	return render(request, 'common/login_student.html')    
 
 def teach_Login(request):
@@ -215,7 +218,7 @@ def timetable(request):
 		messages.info(request, 'No Changes Added')		
 		return render(request, 'common/changetimetable.html')
 
-def loginstudent(request):	
+def loginstudent(request):
 	
 		first_name = request.POST.get("first_name")
 		last_name = request.POST.get("last_name")
@@ -230,6 +233,10 @@ def loginstudent(request):
 			temp = studentobj.student_id
 			stmappingobject = STmapping.objects.get(student_id=temp)
 			parentobject = stmappingobject.parent_id
+			id = studentobj.get_studentid()
+			loginobj = LoginS(student_id_id=id)
+			loginobj.save()
+
 			return render(request, 'common/studentDashboard.html', {'dbuser':studentobj, 'attendence':attendence,'classinfo':classinfo, 'parentobject':parentobject})	
 		
 		else:		
@@ -311,7 +318,9 @@ def loginAdmin(request):
 	if password == query.getPassword():
 		first_name = query.getfName()
 		last_name = query.getlName()
-		return render(request, 'common/adminDashboard.html', {'first':first_name, 'last':last_name})
+		id = query.getId()
+		
+		return render(request, 'common/adminDashboard.html', {'first':first_name, 'last':last_name, 'id':id})
 	else:
 		messages.info(request, 'Invalid credentials')
 		return render(request, 'common/teach_parent_admin_login.html', {"id" : 3 })

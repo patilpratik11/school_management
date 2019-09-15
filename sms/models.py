@@ -1,5 +1,6 @@
 from django.db import models
 import datetime
+from student.models import StudentModell
 
 # Create your models here.
 
@@ -89,6 +90,7 @@ class Attendance(models.Model):
 	student_roll = models.IntegerField()
 	class_name = models.ForeignKey(ClassTeacher, on_delete=models.CASCADE)
 	date = models.DateField()
+	student_id = models.ForeignKey(StudentModell, on_delete=models.CASCADE, default=1)
 	
 	def __str__(self):
  		return str(self.student_roll)
@@ -108,12 +110,34 @@ class Attendance(models.Model):
 	def getDateStr(self):
 		return str(self.date)
 
+class ExamModell(models.Model):
+    ClassTest = 'Class Test'
+    UnitTest = 'Unit Test'
+    FinalTest = 'Final Test'
+    UnitMarks = 30
+    FinalMarks = 70
+    ClassMarks = 20
+    exam_types = [
+        (ClassTest, 'Class Test'),
+        (UnitTest, 'Unit Test'),
+        (FinalTest, 'Final Test'),
+    ]
+    exam_tot_marks = [
+        (ClassMarks, 20),
+        (UnitMarks, 30),
+        (FinalMarks, 70),
+    ]
+    typeexam = models.CharField(max_length=50, choices=exam_types, primary_key=True)
+    totalexammarks = models.IntegerField(choices=exam_tot_marks)
+	
+
 class Marks(models.Model):
 	subject_name = models.ForeignKey(Subject, on_delete=models.CASCADE)
-	student_roll = models.ForeignKey(Attendance, on_delete=models.CASCADE)
+	#student_roll = models.ForeignKey(Attendance, on_delete=models.CASCADE)
 	class_name = models.ForeignKey(ClassTeacher, on_delete=models.CASCADE)
+	student_id = models.ForeignKey(StudentModell, on_delete=models.CASCADE, default=1)
 	marks = models.IntegerField()
-	exam_type = models.CharField(max_length=100)
+	exam_types = models.ForeignKey(ExamModell,max_length=100, on_delete=models.CASCADE)
 
 	def getSubject(self):
 		return str(self.subject_name)
