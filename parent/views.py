@@ -16,8 +16,9 @@ def viewchild(request):
         print(student_id)
     
         students = StudentModell.objects.get(student_id=student_id)
-    
-        att=Student_attendence.objects.get(student_id =student_id)
+        print("*******======**")
+        print(students)
+        """att=Student_attendence.objects.get(student_id =student_id)
         print(att.getattend)
         class_name=students.getclassname.getclassname
     
@@ -28,9 +29,9 @@ def viewchild(request):
 
         teacher=Teacher.object.get(teacher_id = teacher_id)
 
-        print(teacher)
+        print(teacher)"""
       
-        return render(request,'common/viewchild.html',{'students':students,"att":att,'teacher':teacher})
+        return render(request,'common/viewchild.html',{'students':students})
     except Exception as e:
         messages.info(request,e)
         return render(request,'common/viewchild.html')

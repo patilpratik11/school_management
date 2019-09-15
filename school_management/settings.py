@@ -131,6 +131,7 @@ USE_TZ = True
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'sms/static'),
     os.path.join(BASE_DIR, 'sms/media'),
+    
 ]
 STATIC_URL = '/sms/static/'
 MEDIA_URL = '/sms/media/'
@@ -138,4 +139,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static_common')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_common')
 
 #STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static')
-print("base dir path", BASE_DIR)
+
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = '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'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
