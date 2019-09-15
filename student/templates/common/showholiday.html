@@ -1,0 +1,32 @@
+{% extends 'common/base.html' %}
+{% block content %}
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container text-center">
+        <h1 class="display-1">Upcoming Holiday</h1>
+    </div>
+</div>
+	
+	<div class="container text-center">
+		
+			<table class="table table-bordered table-sm table-hover table-white  text-white">
+		<thead class="thead-dark">
+			<th>Date</th>
+			<th>Holiday</th>
+        </thead>
+			{% for x in holidays %}
+				<tr class="bg-info">
+					<td>{{x.datez.year}}-{{x.datez.month}}-{{x.datez.day}}</td>
+					<td>{{x.holidayname}}</td>
+				</tr>	
+			{% endfor %}
+			</table>
+			
+			<div>
+				{% for message in messages %}
+				<h3> {{message}} </h3>
+				{% endfor %}
+			</div>
+	
+</div>
+{% endblock %}
