@@ -30,3 +30,14 @@ class AdminModel(models.Model):
 
 	def getId(self):
 		return self.adm_id
+
+class holidaylist(models.Model):
+	datez = models.DateField()
+	holidayname = models.CharField(max_length=100)
+	
+
+	def getdatez(self):
+		return self.datez	
+
+	def gethname(self):
+		return str(self.holidayname) 

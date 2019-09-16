@@ -1,0 +1,48 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+{% load static %}
+<script type="text/javascript" src="{% static '/fusioncharts.js' %}"></script>
+
+<script type="text/javascript" src="{% static '/themes/fusioncharts.theme.fusion.js' %}"></script></head>
+
+<div class="card d-block shadow p-4 mb-4 bg-white">
+        <div class="card-body text-center">
+                <body>
+                        <div id="myFirstchart-container">{{ output|safe }}</div>
+                </body>
+       
+            
+        </div>
+        
+</div>
+<div class="card d-block shadow p-4 mb-4 bg-white">
+    <center><h3>Class Test Marks </h3></center>
+        <div class="card-body text-center">
+                <table class="table text-center text-white table-bordered  table-dark">
+                
+						<thead>
+                                <th>Subjects</th>
+                                {% for x in subjs %}
+                                    <th>{{x.subject_name}}</th>
+                                {% endfor %}
+                        </thead>
+                        <tr>
+                                <td> Marks</td>
+                                {% for x in classtestmarks %}
+                                    <td>{{x.getMarks}}</td>
+                                {% endfor %}					
+                            </tr>
+						
+					</table
+       
+            
+        </div>
+        
+</div>
+
+
+
+
+
+{% endblock %}
