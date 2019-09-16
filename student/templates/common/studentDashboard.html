@@ -13,7 +13,7 @@
                     <div class="row h-100 align-items-center">
                         <div class="col-sm text-center">
                             <img src="{% static 'common/studentsmall.png' %}"
-                                class="rounded-circle mx-auto d-block mt-3" height="200px" width="200px"
+                                class="rounded-circle mx-auto d-block mt-3 border" height="200px" width="200px"
                                 alt="Cinque Terre">
                         </div>
                         <div class="col-sm text-left">
@@ -39,12 +39,7 @@
                                    
                                 </div>
                             </div>
-                            <div class="row h-100 align-items-left">
-                                <div class="col-sm text-left">
-                                    <button type="button" class="btn btn-primary btn-sm">View Details</button>
-                                </div>
-                            </div>
-
+                           
 
                         </div>
                     </div>
@@ -64,7 +59,7 @@
                     <h5 class="card-title">Attendence</h5>
                     <h1 class="display-3">{{ att.attendence_percent }} %</h1>
                     {% endfor %}
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <a href="{% url 'showatt' %}" class="btn btn-primary">Check Absent Record</a>
                 </div>
             </div>
         </div>
@@ -73,59 +68,10 @@
                 <div class="card-body">
                     <h1 class="display-3">Time Table</h1>
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                        View
-                    </button>
+                    <a class="btn btn-primary" href="{% url 'showtt' %}" role="button">Show Time Table</a>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalCenterTitle">Time Table</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <table class="table table-hover table-dark">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">Monday</th>
-                                                <th scope="col">Tuesday</th>
-                                                <th scope="col">Wednesday</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row">8am - 9am</th>
-                                                <td>English</td>
-                                                <td>English</td>
-                                                <td>P.T.</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">9am - 10am</th>
-                                                <td>History</td>
-                                                <td>Geography</td>
-                                                <td>Maths</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">10am - 11am</th>
-                                                <td>Maths</td>
-                                                <td>Science</td>
-                                                <td>Marathi</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
 
                 </div>
             </div>
@@ -353,273 +299,24 @@
                     </div>
 
                     <!-- View Marks button -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal"
-                        data-target="#exampleModalCenter2">
-                        View Marks
-                    </button>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog"
-                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="accordion" id="accordionExample1">
-                                        <div class="card">
-                                            <div class="card-header" id="headingOne">
-                                                <h2 class="mb-0">
-                                                    <button class="btn btn-link" type="button" data-toggle="collapse"
-                                                        data-target="#collapseOne" aria-expanded="true"
-                                                        aria-controls="collapseOne">
-                                                        Class Tests
-                                                    </button>
-                                                </h2>
-                                            </div>
-
-                                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                                                data-parent="#accordionExample1">
-                                                <div class="card-body">
-                                                    <!-- Table of Class -->
-                                                    <table class="table table-sm table-hover table-dark">
-                                                        <thead>
-                                                            <tr>
-
-                                                                <th scope="col">Date</th>
-                                                                <th scope="col">Subject</th>
-
-                                                                <th scope="col">Marks</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-
-                                                                <td>5th September - Monday</td>
-                                                                <td>History</td>
-
-                                                                <td>26</td>
-                                                            </tr>
-                                                            <tr>
-
-                                                                <td>15th September - Thursday</td>
-                                                                <td>Geography</td>
-
-                                                                <td>30</td>
-                                                            </tr>
-                                                            <tr>
-
-                                                                <td>20th September - Friday</td>
-                                                                <td>Science</td>
-
-                                                                <td>24</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card">
-                                            <div class="card-header" id="headingTwo">
-                                                <h2 class="mb-0">
-                                                    <button class="btn btn-link collapsed" type="button"
-                                                        data-toggle="collapse" data-target="#collapseTwo"
-                                                        aria-expanded="false" aria-controls="collapseTwo">
-                                                        Unit Tests
-                                                    </button>
-                                                </h2>
-                                            </div>
-                                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-                                                data-parent="#accordionExample1">
-                                                <div class="card-body">
-                                                    <table class="table table-sm table-hover table-dark">
-                                                        <thead>
-                                                            <tr>
-
-                                                                <th scope="col">Date</th>
-                                                                <th scope="col">Subject</th>
-                                                                <th scope="col">Marks</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-
-                                                                <td>5th September - Monday</td>
-                                                                <td>History</td>
-                                                                <td>26</td>
-                                                            </tr>
-                                                            <tr>
-
-                                                                <td>6th September - Tuesday</td>
-                                                                <td>Geography</td>
-                                                                <td>22</td>
-                                                            </tr>
-                                                            <tr>
-
-                                                                <td>7th September - Wednesday</td>
-                                                                <td>Science</td>
-                                                                <td>28</td>
-                                                            </tr>
-                                                            <tr>
-
-                                                                <td>8th September - Thursday</td>
-                                                                <td>English</td>
-                                                                <td>24</td>
-                                                            </tr>
-                                                            <tr>
-
-                                                                <td>9th September - Friday</td>
-                                                                <td>Maths</td>
-                                                                <td>30</td>
-                                                            </tr>
-                                                            <tr>
-
-                                                                <td>12th September - Monday</td>
-                                                                <td>Marathi</td>
-                                                                <td>21</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card">
-                                            <div class="card-header" id="headingThree">
-                                                <h2 class="mb-0">
-                                                    <button class="btn btn-link collapsed" type="button"
-                                                        data-toggle="collapse" data-target="#collapseThree"
-                                                        aria-expanded="false" aria-controls="collapseThree">
-                                                        Final Exam
-                                                    </button>
-                                                </h2>
-                                            </div>
-                                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                                                data-parent="#accordionExample1">
-                                                <div class="card-body">
-                                                    <table class="table table-sm table-hover table-dark">
-                                                        <thead>
-                                                            <tr>
-
-                                                                <th scope="col">Date</th>
-                                                                <th scope="col">Subject</th>
-                                                                <th scope="col">Mark</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-
-                                                                <td>5th September - Monday</td>
-                                                                <td>History</td>
-                                                                <td>66</td>
-                                                            </tr>
-                                                            <tr>
-
-                                                                <td>6th September - Tuesday</td>
-                                                                <td>Geography</td>
-                                                                <td>50</td>
-                                                            </tr>
-                                                            <tr>
-
-                                                                <td>7th September - Wednesday</td>
-                                                                <td>Science</td>
-                                                                <td>60</td>
-                                                            </tr>
-                                                            <tr>
-
-                                                                <td>8th September - Thursday</td>
-                                                                <td>English</td>
-                                                                <td>55</td>
-                                                            </tr>
-                                                            <tr>
-
-                                                                <td>9th September - Friday</td>
-                                                                <td>Maths</td>
-                                                                <td>66</td>
-                                                            </tr>
-                                                            <tr>
-
-                                                                <td>12th September - Monday</td>
-                                                                <td>Marathi</td>
-                                                                <td>62</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <a class="btn btn-primary" href="{% url 'showmarks' %}" role="button">View Marks</a>
+                    
                 </div>
             </div>
         </div>
         <div class="col-sm-6 text-center">
-            <div class="card text-center text-white bg-dark mb-3">
-                <div class="card-body">
-                        <h1 class="display-4">Holiday/Event List</h1>
-                    
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter11">
-                            Check List
-                          </button>
-                          
-                          <!-- Modal -->
-                          <div class="modal fade" id="exampleModalCenter11" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body text-dark">
-                                        <p>
-                                                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                  Click here for Holiday List
-                                                </a>
-                                            </p>
-                                            <div class="collapse" id="collapseExample">
-                                              <div class="card card-body">
-                                                  <ul>
-                                                      <li><h4><span class="badge badge-info">3rd - March</span> Holi</h4></li>
-                                                      <li><h4><span class="badge badge-info">3rd - March</span> Holi</h4></li>
-                                                      <li><h4><span class="badge badge-info">3rd - March</span> Holi</h4></li>
-                                                  </ul>
-                                              </div>
-                                            </div> 
-                                            
-                                            <p>
-                                                    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                            Click here for Event List
-                                                    </a>
-                                                </p>
-                                                <div class="collapse" id="collapseExample1">
-                                                  <div class="card card-body">
-                                                        <ul>
-                                                                <li><h4><span class="badge badge-info">3rd - March</span> Maths Olympiad</h4></li>
-                                                                <li><h4><span class="badge badge-info">3rd - March</span> Book Fair</h4></li>
-                                                                <li><h4><span class="badge badge-info">3rd - March</span> Sports Day</h4></li>
-                                                        </ul> 
-                                                  </div>
-                                                </div>      
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </div>
-                              </div>
+                <div class="card text-center text-white bg-dark mb-3">
+                        <div class="card-body">
+                                <h1 class="display-4">Upcoming Holiday</h1>
+                                
+                                <a class="btn btn-primary" href="{% url 'showholiday' %}" role="button">View Marks</a>     
+                               
                             </div>
-                          </div>
-                </div>
-            </div>
+                    </div>
+        </div>
+
+
+            
         </div>
     </div>
 

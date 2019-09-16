@@ -66,6 +66,11 @@ def get_data(request):
 	}
 
 	return JsonResponse(data)
+        print("*******======**")
+        print(students)
+        """att=Student_attendence.objects.get(student_id =student_id)
+        print(att.getattend)
+        class_name=students.getclassname.getclassname
     
 """
 			
@@ -159,6 +164,9 @@ def eanalysis(request):
         data["value"] = value
         dataSource["data"].append(data)
 
+        print(teacher)"""
+      
+        
 
     # Create an object for the column 2D chart using the FusionCharts class constructor
     # The chart data is passed to the `dataSource` parameter.

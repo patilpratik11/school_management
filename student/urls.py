@@ -12,6 +12,11 @@ urlpatterns = [
     url('dashboard/',views.studentDashboard, name="student_dashboard"),
     url('eanalysis/',views.eanalysis, name="examana"),
     url('data/', get_data),
+    url('timetable',views.showtt,name="showtt"),
+    url('marks/',views.showmarks,name="showmarks"),
+    url('attendence/',views.showatt,name="showatt"),
+    url('holidays/',views.showholidays,name="showholiday"),
+    
 ]
 
 if settings.DEBUG:

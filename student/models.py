@@ -11,13 +11,20 @@ class StudentModell(models.Model):
     rollno = models.IntegerField()
     dob = models.CharField(max_length=50)
     address = models.TextField()
-    gender = models.CharField(max_length=20)
+    Male = 'M'
+    Female = 'F'
+    gender = [
+        (Male, 'Male'),
+        (Female, 'Female'),
+    ]
     class_id = models.ForeignKey('ClassModell', on_delete=models.CASCADE)
     blood_group = models.CharField(max_length=5)
     fee_status = models.CharField(max_length=50)
+    def __str__(self):
+        return str(self.student_id)
 
     def get_studentid(self):
-        return self.student_id
+        return str(self.student_id)
 
     def getfname(self):
         return self.student_fname
@@ -39,10 +46,7 @@ class StudentModell(models.Model):
 
     #To access student's parent
     def getparentname(self):
-        return self.student_mname
-
-    def getlname(self):
-        return self.student_lname
+        return self.student_mname+" "+self.student_lname
 
     def getclassname(self):
         return self.class_id
@@ -55,7 +59,8 @@ class ClassModell(models.Model):
     default_value = '999'
     class_id = models.AutoField(primary_key=True, default=default_value)
     class_name = models.CharField(max_length=10, default='8A')
-    
+    def __str__(self):
+        return str(self.class_name)
 
     def getclassname(self):
         return self.class_name
@@ -63,29 +68,26 @@ class ClassModell(models.Model):
     def getclassid(self):
         return self.class_id
 
+    
+
 
 class ParentModell(models.Model):
-    
+    default_value = '999'
     parent_id = models.AutoField(
-        primary_key=True,auto_created=True)
+        primary_key=True, default=default_value, auto_created=True)
     parent_fname = models.CharField(max_length=50, default='null')
     parent_mname = models.CharField(max_length=50, default='null')
     parent_lname = models.CharField(max_length=50, default='null')
-    password = models.CharField(max_length=50)
-    email = models.CharField(max_length=50,unique=True)
-    mobile = models.CharField(max_length=20)
+    password = models.CharField(max_length=50, default='null')
+    email = models.EmailField(max_length=200, unique=True)
+    def __str__(self):
+        return str(self.parent_id)
+
+    def getPassword(self):
+        return self.password
 
     def getparentid(self):
         return self.parent_id
-    
-    def getPassword(self):
-        return self.password
-    
-    def getemail(self):
-        return self.email
-    
-    def getmobile(self):
-        return self.mobile
 
     def getfullname(self):
         return self.parent_fname+" "+self.parent_mname+" "+self.parent_lname
@@ -94,6 +96,8 @@ class ParentModell(models.Model):
 class STmapping(models.Model):
     student_id = models.ForeignKey('StudentModell', on_delete=models.CASCADE)
     parent_id = models.ForeignKey('ParentModell', on_delete=models.CASCADE)
+    def __str__(self):
+        return str(self.student_id)
 
     def getstudent_id(self):
         return self.student_id
@@ -105,6 +109,8 @@ class STmapping(models.Model):
 class StudentParent(models.Model):
     student_id = models.ForeignKey('StudentModell', on_delete=models.CASCADE)
     parent_id = models.ForeignKey('ParentModell', on_delete=models.CASCADE)
+    def __str__(self):
+        return str(self.student_id+"-"+self.parent_id)
 
     def getstudent_id(self):
         return self.student_id
@@ -114,12 +120,13 @@ class StudentParent(models.Model):
 
 
 class Student_attendence(models.Model):
-    student_id = models.OneToOneField(
-        StudentModell, on_delete=models.CASCADE, to_field='student_id', primary_key=True, default=1)
+    default_value="1"
+    student_id = models.OneToOneField(StudentModell, on_delete=models.CASCADE, to_field='student_id', primary_key=True, default=1)
     class_id = models.ForeignKey('ClassModell', on_delete=models.CASCADE)
     attendence_percent = models.IntegerField()
-    # def getattnedence_percent(self):
-    #     return (self.noofdays_attended/self.total_days)*100
+
+    def __str__(self):
+        return str(self.student_id+"-"+self.class_id)
 
     def getstudent_id(self):
         return self.student_id
@@ -135,6 +142,8 @@ class SubjectModell(models.Model):
     subject_id = models.AutoField(primary_key=True)
     subject_name = models.CharField(max_length=30)
     class_id = models.ForeignKey('ClassModell', on_delete=models.CASCADE)
+    def __str__(self):
+        return str(self.subject_name)
 
     def getstubject_id(self):
         return self.subject_id
@@ -148,8 +157,7 @@ class SubjectModell(models.Model):
 
 class Student_marks(models.Model):
     marks_id = models.AutoField(primary_key=True)
-    student_id = models.ForeignKey(
-        'StudentModell', on_delete=models.CASCADE, default=1)
+    student_id = models.ForeignKey('StudentModell', on_delete=models.CASCADE, default=1)
     subject_id = models.ForeignKey('SubjectModell', on_delete=models.CASCADE)
     class_id = models.ForeignKey('ClassModell', on_delete=models.CASCADE)
     year = models.IntegerField()
@@ -162,6 +170,8 @@ class Student_marks(models.Model):
         (F, 'F'),
     ]
     pass_fail = models.CharField(choices=pfstatus, max_length=10)
+    def __str__(self):
+        return str(self.student_id+"-"+self.marks)
 
     def getstudent_id(self):
         return self.student_id
@@ -210,3 +220,10 @@ class ExamModell(models.Model):
 
     def getexamtotmarks(self):
         return self.totalexammarks
+
+class LoginS(models.Model):
+
+	student_id = models.ForeignKey(StudentModell, on_delete=models.CASCADE)
+	
+	def getId(self):
+		return str(self.student_id)

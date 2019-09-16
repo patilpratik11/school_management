@@ -18,6 +18,10 @@ urlpatterns = [
     url('viewteacher',views.viewTeacher, name="viewteacher"),
     url('changepassword',views.changePassword, name="changepassword"),
     url('mailparent',views.mailParent, name="mailparent"),
+    url('updatestudent',views.updateStudent, name="updatestudent"),
+    url('studentanalysis',views.studentAnalysis, name="studentanalysis"),
+    url('resultgeneration',views.resultGeneration, name="resultgeneration"),
+    url('idgeneration',views.idGeneration, name="idgeneration"),
 ]
 
 if settings.DEBUG:
