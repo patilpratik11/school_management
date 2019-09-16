@@ -18,7 +18,9 @@
                         </div>
                         <div class="col-sm text-left">
                             
-                            <h1 class="display-4">{{ dbuser.getfullname }}</h1>
+                            <h1 class="display-4">Name :{{ dbuser.getfullname }}</h1>
+                            <h3 >Mobile No :{{ dbuser.getmobile }}</h3>
+                            
                             
 
                         </div>
@@ -28,19 +30,23 @@
         </div>
     </div>
 </div>
+<div class="container container-fluid">
 {% for item in object %}
+<div class="card-deck">
 			
 <form method="post" action="viewchild">	
         <input type="hidden" name="student" value="{{item.student_id.get_studentid}}" />
+        
    
-        {% csrf_token %}	
-<div class="container container-fluid" style="width:25%">
+        {% csrf_token %}
+<div class="card-deck">        	
+<div class="container container-fluid" style="width:200%">
 
-    <div class="card-deck">
+    
         <div class="card d-block shadow p-4 mb-4 bg-white">
             <div class="card-body text-center">
                 <img src="{% static 'common/studentsmall.png' %}" alt="Card image" style="width:25%"><br>
-                <p class="card-text"></p>
+                
                
                             <div class="row h-100 align-items-left">
                                 <div class="col-sm text-left">
@@ -59,8 +65,8 @@
                             
                             <div class="row h-100 align-items-left">
                                 <div class="col-sm text-left">
-                                  <center><h5 style="margin-bottom: 10px;"><span class="badge badge-light">Roll no - {{item.student_id.getrollno}}</span></center>
-                                    </h5>
+                                  <center><h5 style="margin-bottom: 10px;"><span class="badge badge-light">Roll no - {{item.student_id.getrollno}}</span></center></h5>
+                                
                                 </div>
                             </div>
                             <div class="row h-100 align-items-left">
@@ -73,8 +79,11 @@
         </div>
     </div>
 </div>
+
+
 </form>
 {% endfor %}
+</div>
 
 
 

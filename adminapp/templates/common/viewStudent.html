@@ -3,16 +3,35 @@
 {% block content %}    
 
 {% load static %}
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<hr>
+<!---->
+<br>
+<div class="container-fluid ">
+        <form action="resultgeneration" method="post">
+                {% csrf_token %}
+            <div class="form-group">
+                
+                <input type="hidden" class="form-control" name="sid" value="{{student.student_id}}">
+            </div>
+            <button type="submit" class="btn btn-outline-dark d-block ml-1 mr-4 float-right">Result</button>
+        </form>
+          
+        <form action="idgeneration" method="post">
+                {% csrf_token %}
+            <div class="form-group">
+                
+                <input type="hidden" class="form-control" name="sid" value="{{student.student_id}}">
+            </div>
+            <button type="submit" class="btn btn-outline-dark ml-1 mr-4 float-right">ID Card</button>
+        </form>
+</div>
+<br><hr>
     <div class="container mw-100">
         <center>
         <div class="panel-group ">
             <div class="panel panel-info shadow w-75 p-4 mb-4 d-block">
-              <div class="panel-heading">Student Information</div>
-              <div class="panel-body">
-                    <table class="table table-condensed">
+              <div class="panel-heading"><strong>Student Information</strong></div>
+              <div class="table-responsive-lg">
+                    <table class="table table-condensed table-striped">
                             <thead>
                             </thead>
                             <tbody>
@@ -45,9 +64,9 @@
             </div>
             <hr>
             <div class="panel panel-info shadow w-75 p-4 mb-4 d-block ">
-                    <div class="panel-heading">Parent Information</div>
-                    <div class="panel-body">
-                          <table class="table table-condensed">
+                    <div class="panel-heading thead-dark"><strong>Parent Information</strong><br></div>
+                    <div class="table-responsive-lg">
+                          <table class="table table-condensed table-striped">
                               <center>
                                   <thead>
                                   </thead>
@@ -68,10 +87,10 @@
                                       <td>Mobile Number</td>
                                       <td></td>
                                       <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{student.getrollno}}</td>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{parent.getmobile}}</td>
                                     </tr>
                                     <tr>
-                                            <td>Email Id</td>
+                                        <td>Email Id</td>
                                             <td></td>
                                             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{parent.getemail}}</td>
@@ -88,28 +107,123 @@
     </div>
     <hr>
     <div class="container container-fluid">
-            <p class="card-text">Mail Parent</p>
-            <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#myModal">
-                Compose
+            <div class="card-deck">
+    
+                    <div class="card d-block shadow p-4 mb-4 bg-white">
+            <div class="card-body text-center">
+                                
+                    <img class="card-img-top" src="{% static 'common/ac.png' %}" alt="Card image" style="width:50%"><br>
+                    <br> <p class="card-text">Update Student Details</p>
+            <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#myModal9">
+                Update
             </button>
             <!-- The Modal -->
-            <div class="modal fade" id="myModal">
+            <div class="modal fade" id="myModal9">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
-
+    
                         <!-- Modal Header -->
                         <div class="modal-header">
                             <h4 class="modal-title ">Enter Details</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
+    
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                                <form action="updatestudent" method="post">
+                                        {% csrf_token %}
+                                        <input type="hidden" class="form-control" name="sid" value="{{student.student_id}}">
+                                    <div class="form-group">
+                                        <label class="lead float-left">First Name:</label>
+                                        <input type="text" class="form-control" name="first_name" value="{{student.student_fname}}">
+                                    </div>
+                                    <div class="form-group">
+                                            <label class="lead float-left">Middle Name:</label>
+                                            <input type="text" class="form-control" name="middle_name" value="{{student.student_mname}}">
+                                        </div>
+                                    <div class="form-group">
+                                                <label class="lead float-left">Last Name:</label>
+                                                <input type="text" class="form-control" name="last_name" value="{{student.student_lname}}">
+                                    </div>
+                                    <hr>
+                                    <div class="form-group">
+                                            <label class="lead float-left">Class:</label>
+                                            <input type="text" class="form-control" name="class" value="{{student.getclassname.getclassname}}">
+                                    
+                                        </div>
+                                    <div class="form-group">
+                                            <label class="lead float-left">Roll Number:</label>
+                                            <input type="text" class="form-control" name="rollno" value="{{student.getrollno}}">
+                                    </div>
+                                    <div class="form-group">
+                                            <label class="lead float-left">DOB:</label>
+                                            <input type="text" class="form-control" placeholder="YYYY-MM-DD" name="dob" value="{{student.getdob}}">
+                                        </div>
+                                                                                                                        
+                                        <div class="form-group">
+                                                <label class="lead float-left">Blood Group:</label>
+                                                <input type="text" class="form-control"  name="bg" value="{{student.getbloodgroup}}">
+                                            </div>
+                                            <div class="form-group">
+                                                    <label class="lead float-left">Fee status:</label>
+                                                    <input type="text" class="form-control"  name="fee" value="{{student.getstatus}}">
+                                                </div>
+                                    <hr>
+                                   
+                                    <div class="form-group">
+                                                <label class="lead float-left">Email:</label>
+                                                <input type="email" class="form-control" name="email" value="{{parent.getemail}}">
+                                    </div>
+                                    <div class="form-group">
+                                            <label class="lead float-left">Mobile Number:</label>
+                                            <input type="text" class="form-control" name="mobile" value="{{parent.getmobile}}">
+                                    </div>
+                                    <div class="form-group">
+                                            <label class="lead float-left">Parent Password:</label>
+                                            <input type="text" class="form-control" name="password" value="{{parent.getPassword}}">
+                                    </div>
+                                    <hr>
 
+
+
+                                    <button type="button" class="btn btn-outline-danger mx-auto d-block float-right m-3" data-dismiss="modal">CLOSE</button>
+                                    <button type="submit" class="btn btn-outline-success float-right m-3">Submit</button>
+                                </form>
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card d-block shadow p-4 mb-4 bg-white">
+            <div class="card-body text-center">
+                                
+                    <img class="card-img-top" src="{% static 'common/gp.png' %}" alt="Card image" style="width:50%"><br>
+                    <br><p class="card-text">Mail Parent</p>
+            <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#myModal3">
+                Compose
+            </button>
+            <!-- The Modal -->
+            <div class="modal fade" id="myModal3">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+    
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title ">Enter Details</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+    
                         <!-- Modal body -->
                         <div class="modal-body">
                             <form action="mailparent" method="post">
                                     {% csrf_token %}
+                                    <input type="hidden" class="form-control" name="sid" value="{{student.student_id}}">
+                                    <input type="hidden" class="form-control" name="pid" value="{{parent.parent_id}}">
                                 <div class="form-group">
                                     <label class="lead float-left">To:</label>
-                                    <input type="email" placeholder="ABC" class="form-control" name="tomail">
+                                    <input type="text" class="form-control" name="tomail" value="{{parent.getemail}}">
                                 </div>
                                 <div class="form-group">
                                         <label class="lead float-left">Subject:</label>
@@ -118,17 +232,44 @@
                                 
                                 <div class="form-group">
                                         <label class="lead float-left">Mail Body:</label>
-                                        <textarea class="form-control" rows="5" name="address"></textarea>
+                                        <textarea class="form-control" rows="5" name="body"></textarea>
                                     </div>
                                 <button type="button" class="btn btn-outline-danger mx-auto d-block float-right m-3" data-dismiss="modal">CLOSE</button>
                                 <button type="submit" class="btn btn-outline-success float-right m-3">Submit</button>
                             </form>
                         </div>
-
+    
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="card d-block shadow p-4 mb-4 bg-white">
+            <div class="card-body text-center">
+                                
+                    <img class="card-img-top" src="{% static 'common/yearsub.png' %}" alt="Card image" style="width:50%"><br>
+                   <br> <p class="card-text">View {{student.student_fname}}'s Progress</p>
+                    <form action="studentanalysis" method="post">
+                            {% csrf_token %}
+                        <div class="form-group">
+                            
+                            <input type="hidden" class="form-control" name="sid" value="{{student.student_id}}">
+                        </div>
+                        <button type="submit" class="btn btn-outline-dark">Submit</button>
+                    </form>
+        
+
+
+        </div>
+    </div>
+        </div>
+        </div>
     
+    <div class="card bg-light border-dark" style="margin:10px">
+            {% for message in messages %}
+            <h3> {{message}} </h3>
+            {% endfor %}
+        </div>
+
 
 {% endblock %}

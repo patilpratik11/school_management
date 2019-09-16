@@ -11,6 +11,10 @@ from django.conf.urls.static import static
 urlpatterns = [
    
     path('parent/viewchild',views.viewchild,name="viewchild"),
+    url('eanalysis',views.eanalysis, name="eanalysis"),
+    url('marks',views.showmarks,name="showmarks"),
+     
+
 
 
 ]

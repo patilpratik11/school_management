@@ -5,7 +5,7 @@ from student.models import StudentModell
 # Create your models here.
 
 class Teacher(models.Model):
-	teacher_id = models.AutoField(primary_key=True, default=99) 
+	teacher_id = models.AutoField(primary_key=True) 
 	first_name = models.CharField(max_length=100)
 	middle_name = models.CharField(max_length=100)
 	last_name = models.CharField(max_length=100)
@@ -49,7 +49,7 @@ class ClassTeacher(models.Model):
 		return str(self.class_name)
 
 	def getTeacher_id(self):
-		return self.teacher_id
+		return str(self.teacher_id)
 			
 
 class Subject(models.Model):
