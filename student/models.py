@@ -227,3 +227,5 @@ class LoginS(models.Model):
 	
 	def getId(self):
 		return str(self.student_id)
+
+      

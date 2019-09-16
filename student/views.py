@@ -7,6 +7,10 @@ from sms.models import *
 from adminapp.models import holidaylist
 import datetime
 from datetime import datetime, date
+from django.views.generic.base import TemplateView
+import xlwt
+from django.http import HttpResponse
+from django.contrib.auth.models import User
 
 
 # Logged In user details accessed.
@@ -100,6 +104,64 @@ def showholidays(request):
     return render(request, 'common/showholiday.html', {'holidays':temp})
     return render(request, 'common/showholiday.html')    
 
+def export_users_xls(request):
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="Results1.xls"'
+
+    wb = xlwt.Workbook(encoding='utf-8')
+    ws = wb.add_sheet('Users11 Data') # this will make a sheet named Users Data
+
+    # Sheet header, first row
+    row_num = 0
+
+    font_style = xlwt.XFStyle()
+    font_style.font.bold = True
+
+    
+    
+    columns = ['Subjects', 'History', 'Geography', 'English', 'Maths', 'Marathi', 'Science', ]
+    vcolumn = ['Class Test', 'Unit Test', 'Final Test']
+
+    for col_num in range(len(columns)):
+        ws.write(row_num, col_num, columns[col_num], font_style) # at 0 row 1 column 
+
+    font_style = xlwt.XFStyle()
+
+    ws.write(1,0,vcolumn[0],font_style)
+    ws.write(2,0,vcolumn[1],font_style)
+    ws.write(3,0,vcolumn[2],font_style)
+    # Sheet body, remaining rows
+    
+
+    #rows = User.objects.all().values_list('username', 'first_name', 'last_name', 'email')
+    row1 = list(Marks.objects.filter(student_id_id= loggedin_id).filter(exam_types_id='Class Test').values_list('marks', flat=True))
+    row2 = list(Marks.objects.filter(student_id_id= loggedin_id).filter(exam_types_id='Unit Test').values_list('marks', flat=True))
+    row3 = list(Marks.objects.filter(student_id_id= loggedin_id).filter(exam_types_id='Final Test').values_list('marks', flat=True))
+
+    
+    # for row in rows:
+    #     row_num += 1
+    #     for col_num in range(len(row)):
+    #         ws.write(row_num, col_num, row[col_num], font_style)
+    r = [1,len(row1)]
+    row_num = 1
+    colnum = 1
+    for col_num in range(len(row1)):
+        ws.write(1, colnum, row1[col_num], font_style)
+        colnum = colnum + 1
+
+    colnum = 1
+    for col_num in range(len(row2)):
+        ws.write(2, colnum, row2[col_num], font_style)
+        colnum = colnum + 1
+
+    colnum = 1        
+    for col_num in range(len(row3)):
+        ws.write(3, colnum, row3[col_num], font_style)
+        colnum = colnum + 1
+    
+    wb.save(response)
+    return response
 
 
 

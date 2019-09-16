@@ -16,6 +16,7 @@ urlpatterns = [
     url('marks/',views.showmarks,name="showmarks"),
     url('attendence/',views.showatt,name="showatt"),
     url('holidays/',views.showholidays,name="showholiday"),
+    url('results/',views.export_users_xls,name="downloadmarks"),
     
 ]
 
